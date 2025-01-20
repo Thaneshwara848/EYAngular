@@ -1,0 +1,58 @@
+<div class="container">
+    <h2>Employee Management</h2>
+    <form (ngSubmit)="saveEmployee()">
+      <div class="form-group">
+        <label>UID:</label>
+        <input type="text" class="form-control" [(ngModel)]="newEmployee.uid" name="uid" required />
+      </div>
+      <div class="form-group">
+        <label>Name:</label>
+        <input type="text" class="form-control" [(ngModel)]="newEmployee.name" name="name" required />
+      </div>
+      <div class="form-group">
+        <label>Age:</label>
+        <input type="number" class="form-control" [(ngModel)]="newEmployee.age" name="age" required />
+      </div>
+      <div class="form-group">
+        <label>Salary:</label>
+        <input type="number" class="form-control" [(ngModel)]="newEmployee.salary" name="salary" required />
+      </div>
+      <div class="form-group">
+        <label>Designation:</label>
+        <input type="text" class="form-control" [(ngModel)]="newEmployee.designation" name="designation" required />
+      </div>
+      <button class="btn btn-primary" type="submit">
+        {{ isEditMode ? 'Update' : 'Add' }}
+      </button>
+      <button class="btn btn-secondary" (click)="resetForm()" type="button">Reset</button>
+    </form>
+  
+    <hr />
+  
+    <table class="table">
+      <thead>
+        <tr>
+          <th>UID</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Salary</th>
+          <th>Designation</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emp of employees">
+          <td>{{ emp.uid }}</td>
+          <td>{{ emp.name }}</td>
+          <td>{{ emp.age }}</td>
+          <td>{{ emp.salary }}</td>
+          <td>{{ emp.designation }}</td>
+          <td>
+            <button class="btn btn-info" (click)="editEmployee(emp)">Edit</button>
+            <button class="btn btn-danger" (click)="deleteEmployee(emp.uid)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
